@@ -2,13 +2,18 @@ package dkupert.cipher;
 
 import dkupert.cipher.Exceptions.CipherException;
 import dkupert.cipher.Exceptions.TranspositionCipherToLowException;
-
+/**
+ * This class encrypts and decrypts a Text based on the transposition cipher principle 
+ * @author dkupert
+ * @version 2018-10-20
+ */
 public class TranspositionCipher implements Cipher{
 	
 	private int transpositionLevel; 	
 	/**
-	 * 
-	 * @param level
+	 * This is a constructor for this class which initializes the transpositiolevel
+	 * @param level : the transposition lvl
+	 * @throws CipherException : throws the exception if the lvl is not correct 
 	 */
 	public TranspositionCipher(int level) throws CipherException{
 		if(level < 1) {
@@ -17,10 +22,11 @@ public class TranspositionCipher implements Cipher{
 		this.transpositionLevel = level;
 	}
 	/**
-	 * 
-	 * @param level
+	 * This Method set the transposition lvl
+	 * @param level : the transposition lvl
+	 * @throws CipherException : throws the exception if the lvl is not correct 
 	 */
-	public void setTranspositionLevel(int level) throws CipherException, NumberFormatException{
+	public void setTranspositionLevel(int level) throws CipherException{
 		if(level < 1) {
 			throw new TranspositionCipherToLowException();
 		}
@@ -28,7 +34,7 @@ public class TranspositionCipher implements Cipher{
 	}
 	@Override
 	/**
-	 * 
+	 * Encrypts the Text
 	 */
 	public String encrypt(String text) {
 		//
@@ -58,7 +64,7 @@ public class TranspositionCipher implements Cipher{
 
 	@Override
 	/**
-	 * 
+	 * Decryptes the text
 	 */
 	public String decrypt(String text) {
 		// check if \n == translvl

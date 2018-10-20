@@ -216,7 +216,7 @@ public class GUICipherView extends JFrame{
 	}
 	/**
 	 * This Method decryptes the Text which is stored in a Text field
-	 * and displays it in anohter Text field
+	 * and displays it in another Text field
 	 */
 	public void Decrypt() {
 		String placeholder = "";
@@ -230,7 +230,7 @@ public class GUICipherView extends JFrame{
 	}
 	/**
 	 * This Method encryptes the Text which is stored in a Text field
-	 * and displays it in anohter Text field
+	 * and displays it in another Text field
 	 */
 	public void Encrypt() {
 		String placeholder = "";

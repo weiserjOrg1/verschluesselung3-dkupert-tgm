@@ -5,7 +5,8 @@ import dkupert.cipher.Exceptions.KeywordCipherException;
 import dkupert.cipher.Exceptions.KeywordCipherNotSuitableException;
 
 /**
- * 
+ * Uses the parent class MonoAlphabeticCipher to encrypt and decrypt text using the 
+ * KeywordCipher
  * @author dkupert
  * @version 2018-10-20
  */
@@ -18,10 +19,11 @@ public class KeywordCipher extends MonoAlphabeticCipher{
 	public static final int IndexOfä = 228;
 	public static final int IndexOfü = 252;
 	public static final int IndexOfß = 223;
-	
+
 	/**
-	 * 
-	 * @param keyword
+	 * The constructor sets the keyword 
+	 * @param keyword : the keyword
+	 * @throws CipherException : throws the exception if the keyword is wrong
 	 */
 	public KeywordCipher(String keyword) throws CipherException{
 		String defaultAlp = "abcdefghijklmnopqrstuvwxyzäöüß";
@@ -63,9 +65,9 @@ public class KeywordCipher extends MonoAlphabeticCipher{
 		super.setSecretAlphabet(newAlp);
 	}
 	/**
-	 * 
-	 * @param keyword
-	 * @throws CipherException 
+	 * Sets the keyword
+	 * @param keyword : the keyword
+	 * @throws CipherException : throws the exception if the keyword is wrong
 	 */
 	public void setKeyword(String keyword) throws CipherException {
 		String defaultAlp = "abcdefghijklmnopqrstuvwxyzäöüß";
