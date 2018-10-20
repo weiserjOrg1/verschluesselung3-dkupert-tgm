@@ -31,12 +31,15 @@ public class TranspositionCipher implements Cipher{
 	 * 
 	 */
 	public String encrypt(String text) {
-		int lvl = this.transpositionLevel;
+		//
+		//
+		text = text.replace(" ", "");
 		String[] placeHolder = new String[this.transpositionLevel];
 		for(int i = 0; i < placeHolder.length; i++) {
 			placeHolder[i] = "";
 		}
 		String encryptedText = "";
+		
 		int counter = 0;
 		for(int i = 0; i < text.length(); i++) {
 			int resetVal = counter%this.transpositionLevel;
@@ -46,8 +49,9 @@ public class TranspositionCipher implements Cipher{
 			placeHolder[counter] = placeHolder[counter] + text.charAt(i);
 			counter++;
 		}
+		//
 		for(int i = 0; i < placeHolder.length; i++) {
-			encryptedText = encryptedText + placeHolder[i] + "\n"; 
+			encryptedText = encryptedText + placeHolder[i] + " "; 
 		}
 		return encryptedText;
 	}
@@ -58,7 +62,7 @@ public class TranspositionCipher implements Cipher{
 	 */
 	public String decrypt(String text) {
 		// check if \n == translvl
-		int count = text.length() - text.replace("\n", "").length();
+		int count = text.length() - text.replace(" ", "").length();
 		if(count != this.transpositionLevel) {
 			return text;
 		}
@@ -66,6 +70,7 @@ public class TranspositionCipher implements Cipher{
 		
 		String usedText = text;
 		String[] textFragments = new String[this.transpositionLevel];
+		
 		String decryptedText = "";
 		
 		for(int i = 0; i < textFragments.length; i++) {
@@ -73,11 +78,11 @@ public class TranspositionCipher implements Cipher{
 		}
 		//splitting the Text
 		for(int i = 0; i < this.transpositionLevel;) {
-			int help = usedText.indexOf("\n");
-			textFragments[i] = usedText.substring(0, usedText.indexOf("\n"));
+			int help = usedText.indexOf(" ");
+			textFragments[i] = usedText.substring(0, usedText.indexOf(" "));
 			i++;
 			if(i < this.transpositionLevel) {
-				usedText = usedText.substring(usedText.indexOf("\n")+1, usedText.length());
+				usedText = usedText.substring(usedText.indexOf(" ")+1, usedText.length());
 			}
 		}
 		int counter = 0;

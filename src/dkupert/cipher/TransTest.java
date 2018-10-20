@@ -4,9 +4,10 @@ import dkupert.cipher.Exceptions.CipherException;
 
 public class TransTest {
 	public static void main(String[] args) throws CipherException {
-		TranspositionCipher ts = new TranspositionCipher(3);
-		String biba = "hl"+"\n"+"ao"+"\n"+"l"+"\n";
-		System.out.println(ts.decrypt(biba));
+		TranspositionCipher ts = new TranspositionCipher(2);
+		//String biba = "h"+"\n"+"a"+"\n"+"l"+"\n"+"l"+"\n"+"o"+"\n";
+		System.out.println(ts.encrypt("Hallo"));
+		System.out.println(ts.decrypt(ts.encrypt("Hallo")));
 	}
 
 }

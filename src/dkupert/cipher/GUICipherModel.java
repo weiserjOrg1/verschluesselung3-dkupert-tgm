@@ -10,16 +10,18 @@ import dkupert.cipher.Exceptions.CipherException;
 public class GUICipherModel {
 	
 	private MonoAlphabeticCipher mac;
-	
+	private TranspositionCipher tsp;
 	private String mode;
 	
 	//Constructor
 	/**
 	 * This is the default constructor for this class. It initializes the Attributes for the Model
+	 * @throws CipherException 
 	 */
-	public GUICipherModel() {
+	public GUICipherModel() throws CipherException {
 		this.mode = "normal";
-		this.mac = new MonoAlphabeticCipher();		
+		this.mac = new MonoAlphabeticCipher();
+		this.tsp = new TranspositionCipher(2);
 		
 	}
 	
@@ -44,6 +46,15 @@ public class GUICipherModel {
 				this.mac = new SubstitutionCipher(parameter);
 				this.mode = "shift";
 			break;
+			case "key" :
+				this.mac = new MonoAlphabeticCipher();
+				this.mac = new KeywordCipher(parameter);
+				this.mode = "key";
+			break;
+			case "trans" :
+				this.tsp = new TranspositionCipher(Integer.parseInt(parameter));
+				this.mode = "key";
+			break;
 		}
 	}	
 	/**
@@ -61,5 +72,21 @@ public class GUICipherModel {
 	 */
 	public String encrypt(String text) {
 		return this.mac.encrypt(text);
+	}
+	/**
+	 * 
+	 * @param text
+	 * @return
+	 */
+	public String tDecrypt(String text) {
+		return this.tsp.decrypt(text);
+	}
+	/**
+	 * Encrypts the Text
+	 * @param text : which is to be encrypted
+	 * @return : returns the encrypted text
+	 */
+	public String tEncrypt(String text) {
+		return this.tsp.encrypt(text);
 	}
 }

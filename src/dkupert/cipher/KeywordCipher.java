@@ -60,7 +60,7 @@ public class KeywordCipher extends MonoAlphabeticCipher{
 				newAlp = newAlp + c;
 			}
 		}
-		System.out.println(newAlp);
+		super.setSecretAlphabet(newAlp);
 	}
 	/**
 	 * 
@@ -104,5 +104,6 @@ public class KeywordCipher extends MonoAlphabeticCipher{
 				newAlp = newAlp + c;
 			}
 		}
+		super.setSecretAlphabet(newAlp);
 	}
 }

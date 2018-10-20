@@ -63,7 +63,11 @@ public class GUICipherController implements ActionListener{
 	 * This is the default constructor for this class. It initializes the Model and View Object
 	 */
 	public GUICipherController() {
-		this.m1 = new GUICipherModel();
+		try {
+			this.m1 = new GUICipherModel();
+		}catch(CipherException e) {
+			
+		}
 		this.v1 = new GUICipherView(this.m1, this);
 		
 		

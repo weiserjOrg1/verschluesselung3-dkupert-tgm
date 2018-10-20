@@ -27,7 +27,7 @@ public class GUICipherView extends JFrame{
 	private JPanel p11,p12;
 	private JPanel p21,p22;
 	private JPanel p31,p32;
-	private JRadioButton rb1, rb2;
+	private JRadioButton rb1, rb2, rb3, rb4;
 	private ButtonGroup bg1;
 	private JButton b1,b2,b3,b4,b5,b6;
 	private Border border;
@@ -49,7 +49,7 @@ public class GUICipherView extends JFrame{
 		this.setLocationRelativeTo(null); 
 		this.setLayout(new GridLayout(3,1));
 		//Defining
-		this.l = new Label("secret Alphabet / shift Value");
+		this.l = new Label("secret Alphabet / shift Value / Keyword");
 		this.jt = new JTextField(20);
 		this.ja = new JTextArea(8,35);
 		this.ja2 = new JTextArea(8,35);
@@ -66,9 +66,13 @@ public class GUICipherView extends JFrame{
 		this.b6 = new JButton("Reset");
 		this.rb1 = new JRadioButton("SHIFT");
 		this.rb2 = new JRadioButton("SUB");
+		this.rb3 = new JRadioButton("Keyword");
+		this.rb4 = new JRadioButton("Transpos");
 		this.bg1 = new ButtonGroup();
 		this.bg1.add(this.rb1);
 		this.bg1.add(this.rb2);
+		this.bg1.add(this.rb3);
+		this.bg1.add(this.rb4);
 		
 		this.p11 = new JPanel();
 		this.p12 = new JPanel();
@@ -101,7 +105,7 @@ public class GUICipherView extends JFrame{
 		this.p1.setLayout(new GridLayout(1,2));
 		this.p2.setLayout(new GridLayout(1,2));
 		this.p3.setLayout(new GridLayout(1,2));
-		this.p11.setLayout(new GridLayout(2,1));
+		this.p11.setLayout(new GridLayout(3,2));
 		this.p12.setLayout(new GridLayout(5,1));
 		this.p22.setLayout(new GridLayout(3,1));
 		this.p32.setLayout(new GridLayout(3,1));
@@ -128,6 +132,8 @@ public class GUICipherView extends JFrame{
 		//adding
 		this.p11.add(this.rb1);
 		this.p11.add(this.rb2);
+		this.p11.add(this.rb3);
+		this.p11.add(this.rb4);
 		this.p12.add(this.l);
 		this.p12.add(this.jt);
 		this.p12.add(this.b1);
@@ -184,7 +190,15 @@ public class GUICipherView extends JFrame{
 		if(this.rb1.isSelected() == true) {
 			this.m1.changeMode("shift", this.jt.getText());
 		}else {
-			this.m1.changeMode("sub", this.jt.getText());
+			if(this.rb2.isSelected() == true) {
+				this.m1.changeMode("sub", this.jt.getText());
+			}else {
+				if(this.rb3.isSelected()) {
+					this.m1.changeMode("key", this.jt.getText());
+				}else {
+					this.m1.changeMode("trans", this.jt.getText());
+				}
+			}
 		}
 		this.ja.setEnabled(true);
 		this.ja.setBackground(Color.white);
@@ -205,7 +219,12 @@ public class GUICipherView extends JFrame{
 	 * and displays it in anohter Text field
 	 */
 	public void Decrypt() {
-		String placeholder = this.m1.decrypt(this.ja2.getText());
+		String placeholder = "";
+		if(rb4.isSelected() != true) {
+			placeholder = this.m1.decrypt(this.ja2.getText());
+		}else {
+			placeholder = this.m1.tDecrypt(this.ja2.getText()+" ");
+		}
 		this.ja.setText(placeholder);
 		
 	}
@@ -214,7 +233,12 @@ public class GUICipherView extends JFrame{
 	 * and displays it in anohter Text field
 	 */
 	public void Encrypt() {
-		String placeholder = this.m1.encrypt(this.ja.getText());
+		String placeholder = "";
+		if(rb4.isSelected() !=  true) {
+			placeholder = this.m1.encrypt(this.ja.getText());
+		}else {
+			placeholder = this.m1.tEncrypt(this.ja.getText());
+		}
 		this.ja2.setText(placeholder);
 	}
 	/**
