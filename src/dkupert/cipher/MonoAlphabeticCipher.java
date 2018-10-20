@@ -43,7 +43,7 @@ public class MonoAlphabeticCipher implements Cipher{
 	/**
 	 * Changes the secret alphabet after it passes the exception
 	 * @param secretAlphabet : is the new secret alphabet
-	 * @throws CipherException: throws the exception if a problem is found
+	 * @throws CipherException : throws the exception if a problem is found
 	 */
 	protected void setSecretAlphabet(String secretAlphabet) throws CipherException{
 		this.secretAlphabet = checkSecretAlphabet(secretAlphabet);
@@ -95,7 +95,7 @@ public class MonoAlphabeticCipher implements Cipher{
 	 * 
 	 * @param alph : The new secret Alphabet
 	 * @return : return the alphabet if it passes the tests
-	 * @throws CipherExceptions : throws the exception if a problem is found
+	 * @throws CipherException : throws the exception if a problem is found
 	 */
 	public static String checkSecretAlphabet(String alph) throws CipherException{
 		alph = alph.toLowerCase();

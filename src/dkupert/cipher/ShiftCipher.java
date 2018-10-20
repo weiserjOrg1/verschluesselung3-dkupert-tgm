@@ -14,6 +14,7 @@ public class ShiftCipher extends MonoAlphabeticCipher{
 	/**
 	 * This is a constructor for this class which sets the shift value
 	 * @param value : the shift value
+	 * @throws CipherException : throws the exception if the value ins't correct
 	 */
 	public ShiftCipher(int value) throws CipherException{
 		String defaultAlphabet = "abcdefghijklmnopqrstuvwxyzäöüß";
@@ -37,6 +38,7 @@ public class ShiftCipher extends MonoAlphabeticCipher{
 	/**
 	 * This is a Method for this class which sets the shift value
 	 * @param value : the shift value
+	 * @throws CipherException : throws the exception if the value ins't correct
 	 */
 	public void setShiftCipher(int value) throws CipherException{
 		String defaultAlphabet = "abcdefghijklmnopqrstuvwxyzäöüß";

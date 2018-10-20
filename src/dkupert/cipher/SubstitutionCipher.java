@@ -12,8 +12,8 @@ import dkupert.cipher.Exceptions.CipherException;
 public class SubstitutionCipher extends MonoAlphabeticCipher {
 	/**
 	 * Replaces the default Alphabet with the new secret one.
-	 * @param secretAlphabet: the new secret alphabet
-	 * @throws CipherException:  throws the exception if a problem is found
+	 * @param secretAlphabet : the new secret alphabet
+	 * @throws CipherException :  throws the exception if a problem is found
 	 */
 	public SubstitutionCipher(String secretAlphabet) throws CipherException {
 		super.setSecretAlphabet(secretAlphabet);
@@ -21,8 +21,8 @@ public class SubstitutionCipher extends MonoAlphabeticCipher {
 
 	/**
 	 * Replaces the default Alphabet with the new secret one.
-	 * @param secretAlphabet: the new secret alphabet
-	 * @throws CipherException:  throws the exception if a problem is found
+	 * @param secretAlphabet : the new secret alphabet
+	 * @throws CipherException :  throws the exception if a problem is found
 	 */
 	public void setSecretAlphabet(String secretAlphabet) throws CipherException {
 		super.setSecretAlphabet(secretAlphabet);

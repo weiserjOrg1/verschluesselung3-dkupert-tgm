@@ -16,7 +16,7 @@ public class GUICipherModel {
 	//Constructor
 	/**
 	 * This is the default constructor for this class. It initializes the Attributes for the Model
-	 * @throws CipherException 
+	 * @throws CipherException :  Throws the Exception if the Parameter can't be used 
 	 */
 	public GUICipherModel() throws CipherException {
 		this.mode = "normal";
@@ -74,9 +74,9 @@ public class GUICipherModel {
 		return this.mac.encrypt(text);
 	}
 	/**
-	 * 
-	 * @param text
-	 * @return
+	 * Decrypts the Text
+	 * @param text : which is to be encrypted
+	 * @return : returns the encrypted text
 	 */
 	public String tDecrypt(String text) {
 		return this.tsp.decrypt(text);
