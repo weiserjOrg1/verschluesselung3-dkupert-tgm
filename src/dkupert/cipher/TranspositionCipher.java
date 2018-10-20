@@ -58,6 +58,11 @@ public class TranspositionCipher implements Cipher{
 	 */
 	public String decrypt(String text) {
 		// check if \n == translvl
+		int count = text.length() - text.replace("\n", "").length();
+		if(count != this.transpositionLevel) {
+			return text;
+		}
+		
 		
 		String usedText = text;
 		String[] textFragments = new String[this.transpositionLevel];
